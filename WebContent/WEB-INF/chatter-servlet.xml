@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+ 
+ 	<!-- Spring loads all the components from package helloWorldMVC.controller and all its child packages -->
+    <context:component-scan base-package="mellisSpringRabbitChatter.controller" />
+         
+    <!-- resolve the view and add prefix string /WEB-INF/jsp/ and suffix .jsp to the view in ModelAndView.
+    e.g. view name “hello” -> /WEB-INF/jsp/hello.jsp. -->
+    <bean id="viewResolver"
+        class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+        <property name="viewClass"
+            value="org.springframework.web.servlet.view.JstlView" />
+        <property name="prefix" value="/WEB-INF/view/" />
+        <property name="suffix" value=".jsp" />
+    </bean>
+    
+    <bean id="chatterController" class="mellisSpringRabbitChatter.controller.ChatterController">
+        <property name="startView" value = "welcome" />
+        <property name="chatView" value = "chat" />
+        <property name="publishView" value = "chat" />
+        <property name="protocol" value = "" />
+        <property name="admin" ref="admin"/>
+		<property name="template" ref="amqpTemplate"/>
+    </bean>
+    
+    <!-- rabbitmq configuration -->
+    <!-- Connection Factory -->
+	<bean id="chatConnectionFactory" class="org.springframework.amqp.rabbit.connection.CachingConnectionFactory">
+		<constructor-arg><value>localhost</value></constructor-arg>
+		<property name="username" value="guest" />
+		<property name="password" value="guest" />
+		<property name="virtualHost" value="/" />
+		<property name="port" value="5672" />
+	</bean>
+ 
+	<!-- Spring AMQP Template -->
+	<bean id="amqpTemplate" class="org.springframework.amqp.rabbit.core.RabbitTemplate">
+		<property name="connectionFactory" ref="chatConnectionFactory" />
+		<property name="routingKey" value="chatQueue"/>
+		<property name="queue" value="chatQueue"/>
+	</bean>
+ 
+	<!-- Spring AMQP Admin -->
+	<bean id="admin" class="org.springframework.amqp.rabbit.core.RabbitAdmin">
+		<constructor-arg ref="chatConnectionFactory" />
+	</bean>
+
+
+</beans>
