@@ -2,6 +2,7 @@ This app implements a simple spring chat app + rabbitmq (chatQueue)
 
 Pre-requisite:
 Setup and start rabbitmq (localhost:5672 or change configuration in chatter-servlet.xml)
+Create queue "chatQueue"
 
 
 
