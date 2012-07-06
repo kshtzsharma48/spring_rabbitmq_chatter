@@ -6,6 +6,13 @@
     
     <script type="text/javascript" src="js/jquery.min.js"></script>
   	<script type="text/javascript">
+  		$(document).ready(function(){
+  			//run every second
+  			setInterval(function() {
+        		doAjax();
+  			}, 1000);
+  		});
+  		//provide ajax functionality
     	function doAjax() {
       	$.ajax({
         	url: 'update',
@@ -18,16 +25,12 @@
       	});
     	}
   	</script>
-    
-    
 </head>
 <body>
 
 <h2>Mellis Chat</h2>
 	<form:form modelAttribute="chat" method="post" action="${submit_view}">
- 
     <table>
-    
     <tr>
         <td><form:label path="sender">Sender</form:label></td>
         <td><form:input path="sender" style="border : solid 2px #cccccc; padding : 4px; width : 200;"/></td>
@@ -39,15 +42,12 @@
     <tr>
         <td colspan="2">
             <input type="submit" name="add" value="Send Message" />
-        
         </td>
     </tr>
 	</table> 
 	</form:form>
 	
-	<hr/>
-	<button id="update" onclick="doAjax()" title="Button">Update</button>
-	
+	<hr/>	
 	<div id="protocol" style="border : solid 2px #cccccc; background : #000000; color : #ffffff; padding : 4px; height : 300px; overflow : auto;">${protocol} </div>
 </body>
 </html>
