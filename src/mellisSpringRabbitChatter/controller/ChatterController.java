@@ -4,6 +4,8 @@
 
 package mellisSpringRabbitChatter.controller;
  
+import java.util.Date;
+
 import mellisSpringRabbitChatter.entities.Chat;
 
 import org.springframework.amqp.core.AmqpAdmin;
@@ -13,6 +15,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 
@@ -54,7 +58,7 @@ public class ChatterController {
         return modelview;
     }
     
-    // handle submitted form (add)
+    // handle submitted form (submit-button with name="add")
     @RequestMapping(params = "add", value = "/chat", method = RequestMethod.POST)
     public ModelAndView onSubmit(Model model, Chat chat) {
            
@@ -63,14 +67,6 @@ public class ChatterController {
         
         chat = new Chat(chat.getSender());
         return showChat(model, chat);        
-    }
-    
-    // handle submitted form (update)
-    @RequestMapping(params = "update", value = "/chat", method = RequestMethod.POST)
-    public ModelAndView onUpdate(Model model, Chat chat) {
-
-        chat = new Chat(chat.getSender());
-    	return showChat(model, chat);        
     }
     
     //handles form request (get)
@@ -92,5 +88,12 @@ public class ChatterController {
     public void addPost(String message){
     	protocol = protocol + message + "<br>";
     }
+    
+    //return chat protocol to ajax function
+    @RequestMapping(value = "/update", method = RequestMethod.GET)
+    public @ResponseBody String updateChatlog() {
+      return protocol;
+    }
+
     
 }
