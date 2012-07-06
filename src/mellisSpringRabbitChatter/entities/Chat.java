@@ -9,8 +9,7 @@ public class Chat {
 	}
 	public Chat(String sender){
 		this.sender = sender;
-	}
-	
+	}	
 	public String getSender() {
 		return sender;
 	}

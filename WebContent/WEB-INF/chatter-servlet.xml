@@ -3,9 +3,10 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:p="http://www.springframework.org/schema/p"
     xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:rabbit="http://www.springframework.org/schema/rabbit"
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
  
- 	<!-- Spring loads all the components from package helloWorldMVC.controller and all its child packages -->
+ 	<!-- Spring loads all the components from package mellisSpringRabbitChatter.controller and all its child packages -->
     <context:component-scan base-package="mellisSpringRabbitChatter.controller" />
          
     <!-- resolve the view and add prefix string /WEB-INF/jsp/ and suffix .jsp to the view in ModelAndView.
@@ -44,10 +45,26 @@
 		<property name="queue" value="chatQueue"/>
 	</bean>
  
-	<!-- Spring AMQP Admin -->
+ 	<!-- Spring AMQP Admin -->
 	<bean id="admin" class="org.springframework.amqp.rabbit.core.RabbitAdmin">
 		<constructor-arg ref="chatConnectionFactory" />
 	</bean>
-
+	
+	<!-- AMQP message listener container -->
+	<bean class="org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer">
+    	<property name="connectionFactory" ref="chatConnectionFactory" />
+    	<property name="queueNames" value="chatQueue" />
+    	<property name="messageListener" ref="messageListenerAdapter" />
+    </bean>
+  
+  	<!-- listener adapter provides simple conversion -->
+  	<bean id="messageListenerAdapter" class="org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter">
+		<property name="delegate" ref="messageHandler" />
+	</bean>
+  
+  	<!-- implements handleMessage to handle incoming messages -->
+	<bean id="messageHandler" class="mellisSpringRabbitChatter.handler.MessageHandler">
+		<property name="chatterController" ref="chatterController" />
+	</bean>
 
 </beans>

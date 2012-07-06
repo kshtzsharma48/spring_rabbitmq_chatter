@@ -8,6 +8,7 @@ import mellisSpringRabbitChatter.entities.Chat;
 
 import org.springframework.amqp.core.AmqpAdmin;
 import org.springframework.amqp.core.AmqpTemplate;
+import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,12 +23,9 @@ public class ChatterController {
 	private String chatView;
 	private String publishView;
 	private String protocol;
-	private AmqpAdmin admin;
 	private AmqpTemplate template;
+	private RabbitAdmin admin;
 	
-	public void setAdmin(AmqpAdmin admin) {
-		this.admin = admin;
-	}
 	public void setTemplate(AmqpTemplate template) {
 		this.template = template;
 	}
@@ -43,7 +41,9 @@ public class ChatterController {
     public void setProtocol(String protocol){
     	this.protocol = protocol;
     }
-    
+	public void setAdmin(RabbitAdmin admin) {
+		this.admin = admin;
+	}
 	// handle ROOT ("/")
     @RequestMapping("/")
     public ModelAndView handleStartRequest() {
@@ -60,11 +60,9 @@ public class ChatterController {
            
     	// Send a message to the "messages" queue
         template.convertAndSend("chatQueue", chat.getSender() +": "+chat.getMessage());
-        chat = new Chat(chat.getSender());
         
-        return showChat(model, chat);
-          
-    	//return showChat(model, chat);        
+        chat = new Chat(chat.getSender());
+        return showChat(model, chat);        
     }
     
     // handle submitted form (update)
@@ -72,16 +70,6 @@ public class ChatterController {
     public ModelAndView onUpdate(Model model, Chat chat) {
 
         chat = new Chat(chat.getSender());
-        
-        // Receive a message from the "messages" queue
-        String message = (String) template.receiveAndConvert("chatQueue");
-        if (message != null){
-            System.out.println("Message received: " +message);
-        	protocol = protocol + message + "<br>";
-        }
-        else
-            System.out.println("Queue is empty");
-        
     	return showChat(model, chat);        
     }
     
@@ -98,6 +86,11 @@ public class ChatterController {
         
         ModelAndView modelview = new ModelAndView(chatView);
     	return modelview;
+    }
+    
+    //add Post to protocol
+    public void addPost(String message){
+    	protocol = protocol + message + "<br>";
     }
     
 }
