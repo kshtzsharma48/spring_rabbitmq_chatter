@@ -15,7 +15,7 @@
   		//provide ajax functionality
     	function doAjax() {
       	$.ajax({
-        	url: 'update',
+        	url: '${update_view}',
         	success: function(result) {
         		//select div with id="protocol"
         		var protocolDiv = $('#protocol');

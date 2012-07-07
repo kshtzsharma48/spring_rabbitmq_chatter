@@ -25,6 +25,7 @@ public class ChatterController {
 	//injected beans --> chatter-servlet.xml
 	private String startView;
 	private String chatView;
+	private String updateView;
 	private String publishView;
 	private String protocol;
 	private AmqpTemplate template;
@@ -38,6 +39,9 @@ public class ChatterController {
     }	
     public void setChatView(String chatView){
     	this.chatView = chatView;
+    }
+    public void setUpdateView(String updateView){
+    	this.updateView = updateView;
     }
     public void setPublishView(String publishView){
     	this.publishView = publishView;
@@ -78,6 +82,7 @@ public class ChatterController {
     	}
     	model.addAttribute(chat);
         model.addAttribute("submit_view", publishView);
+        model.addAttribute("update_view", updateView);
         model.addAttribute("protocol", protocol);
         
         ModelAndView modelview = new ModelAndView(chatView);

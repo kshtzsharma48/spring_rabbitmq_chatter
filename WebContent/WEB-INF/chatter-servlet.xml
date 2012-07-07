@@ -31,6 +31,7 @@
         <property name="startView" value = "welcome" />
         <property name="chatView" value = "chat" />
         <property name="publishView" value = "chat" />
+        <property name="updateView" value = "update" />
         <property name="protocol" value = "" />
         <property name="admin" ref="admin"/>
 		<property name="template" ref="amqpTemplate"/>
