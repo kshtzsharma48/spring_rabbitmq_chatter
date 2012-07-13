@@ -39,7 +39,12 @@ This app implements a simple spring chat app + rabbitmq
 - JQuery 
 - JSP view with parameters (use jquery to implement ajax for protocol fiv; use Interval to update ajax element each second)
 
-
+<u>spring-rabbitmq-chatter 1.0_di_refactoring1</u>
+- enabled annotations in chatter-servlet.xml
+- created rabbitmq-context.xml containing rabbitmq related configuration beans
+- created webmvc-context.xml containing mvc related configuration beans
+- ChatterController + MessageHandler: annotation based config (@Service, @Autowired)
+Note: there is a controversal discussion about whether to use annotation-based or xml based configuration.
 
 
 

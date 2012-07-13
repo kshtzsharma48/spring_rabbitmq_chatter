@@ -4,23 +4,25 @@
 
 package mellisSpringRabbitChatter.controller;
  
-import java.util.Date;
-
 import mellisSpringRabbitChatter.entities.Chat;
 
 import org.springframework.amqp.core.AmqpAdmin;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.amqp.rabbit.core.RabbitAdmin;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
+@Service("chatterController")
 public class ChatterController {
 	//injected beans --> chatter-servlet.xml
 	private String startView;
@@ -28,25 +30,34 @@ public class ChatterController {
 	private String updateView;
 	private String publishView;
 	private String protocol;
-	private AmqpTemplate template;
-	private RabbitAdmin admin;
-	
-	public void setTemplate(AmqpTemplate template) {
-		this.template = template;
+	//Note: amqpTemplate and admin are autowired. 
+	//There must be a bean with id == property_name, otherwise it will be null
+	@Autowired
+	private AmqpTemplate amqpTemplate = null;
+	@Autowired
+	private RabbitAdmin admin = null;
+
+	public void setAmqpTemplate(AmqpTemplate amqpTemplate) {
+		this.amqpTemplate = amqpTemplate;
 	}
-	public void setStartView(String startView){
+	@Autowired
+	public void setStartView(@Value("welcome") String startView){
     	this.startView = startView;
-    }	
-    public void setChatView(String chatView){
+    }
+	@Autowired
+    public void setChatView(@Value("chat") String chatView){
     	this.chatView = chatView;
     }
-    public void setUpdateView(String updateView){
+	@Autowired
+    public void setUpdateView(@Value("update") String updateView){
     	this.updateView = updateView;
     }
-    public void setPublishView(String publishView){
+	@Autowired
+    public void setPublishView(@Value("chat") String publishView){
     	this.publishView = publishView;
     }	
-    public void setProtocol(String protocol){
+	@Autowired
+    public void setProtocol(@Value("") String protocol){
     	this.protocol = protocol;
     }
 	public void setAdmin(RabbitAdmin admin) {
@@ -65,9 +76,9 @@ public class ChatterController {
     // handle submitted form (submit-button with name="add")
     @RequestMapping(params = "add", value = "/chat", method = RequestMethod.POST)
     public ModelAndView onSubmit(Model model, Chat chat) {
-           
+        
     	// Send a message to the "messages" queue
-        template.convertAndSend("chatQueue", chat.getSender() +": "+chat.getMessage());
+        amqpTemplate.convertAndSend("chatQueue", chat.getSender() +": "+chat.getMessage());
         
         chat = new Chat(chat.getSender());
         return showChat(model, chat);        
