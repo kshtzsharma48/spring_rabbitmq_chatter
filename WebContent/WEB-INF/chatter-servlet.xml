@@ -28,5 +28,5 @@ c:		simple DI configuration for Constructor Injection
 	
  	<!-- scan the code for injectable beans under the specified package (and all its subpackages) -->
     <context:component-scan base-package="mellisSpringRabbitChatter" />
-    
+
 </beans>

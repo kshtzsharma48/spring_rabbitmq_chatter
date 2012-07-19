@@ -34,7 +34,7 @@ c:		simple DI configuration for Constructor Injection
 		<property name="routingKey" value="chatQueue"/>
 		<property name="queue" value="chatQueue"/>
 	</bean>
-	
+
 	 	<!-- Spring AMQP Admin -->
 	<bean id="admin" class="org.springframework.amqp.rabbit.core.RabbitAdmin">
 		<constructor-arg ref="chatConnectionFactory" />
@@ -50,6 +50,11 @@ c:		simple DI configuration for Constructor Injection
       	<!-- listener adapter provides simple conversion -->
   	<bean id="messageListenerAdapter" class="org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter">
 		<property name="delegate" ref="messageHandler"  />
+	</bean>
+	
+	<!-- create queue declaratively -->
+	<bean id="queue" class="org.springframework.amqp.core.Queue">
+		<constructor-arg value="chatQueue" />
 	</bean>
  
 </beans>
