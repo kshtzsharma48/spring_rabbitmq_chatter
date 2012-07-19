@@ -56,12 +56,11 @@ Note: take care of limitations
 
 At the moment there is no way to create queue in cloud foundry via rabbitmq client tools (e.g. management console).
 Thats why the queue must be created by the spring application:
-	<code>
-	<!-- create queue declaratively -->
-	<bean id="queue" class="org.springframework.amqp.core.Queue">
-		<constructor-arg value="chatQueue" />
-	</bean>
-	</code>
+    <!-- create queue declaratively -->
+    <bean id="queue" class="org.springframework.amqp.core.Queue">
+        <constructor-arg value="chatQueue" />
+    </bean>
+
 
 
 
