@@ -47,15 +47,13 @@ This app implements a simple spring chat app + rabbitmq
 Note: there is a controversal discussion about whether to use annotation-based or xml based configuration.
 
 <u>spring-rabbitmq-chatter 1.0_cloudfoundry</u>
-To use cloudfoundry services (e.g. rabbitmq) there are two options:
-- auto-reconfiguration 
-Without changing a single line of code (use one of the other branches --> chatQueue must be created somehow...).
-Cloud Foundry automatically re-configures the relevant bean definitions to bind them to cloud services
-Note: take care of limitations
-- explicit configuration
-
-At the moment there is no way to create queue in cloud foundry via rabbitmq client tools (e.g. management console).
-Thats why the queue must be created by the spring application: rabbitmq-context.xml
+- updated rabbitmq-context.xml in order to create queue
+- cloud foundry auto-reconfiguration Without changing a single line of code (use one of the other branches --> chatQueue must be created somehow...).
+	Cloud Foundry automatically re-configures the relevant bean definitions to bind them to cloud services
+	Note: take care of limitations
+	At the moment there is no way to create queue in cloud foundry via rabbitmq client tools (e.g. management console).
+	Thats why the queue must be created by the spring application: rabbitmq-context.xml
+- updated chat.jsp to provide a button to delete chat protocol
 
 
 

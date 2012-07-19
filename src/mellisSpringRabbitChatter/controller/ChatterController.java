@@ -83,7 +83,15 @@ public class ChatterController {
         chat = new Chat(chat.getSender());
         return showChat(model, chat);        
     }
-    
+    @RequestMapping(params = "delete", value = "/chat", method = RequestMethod.POST)
+    public ModelAndView onDelete(Model model, Chat chat) {
+        
+    	// Clear protocol
+        this.setProtocol("");
+        
+        chat = new Chat(chat.getSender());
+        return showChat(model, chat);        
+    }
     //handles form request (get)
     @RequestMapping(value = "/chat", method = RequestMethod.GET)
     public ModelAndView showChat(Model model, Chat chat) {

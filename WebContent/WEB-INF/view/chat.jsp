@@ -33,7 +33,7 @@
     <table>
     <tr>
         <td><form:label path="sender">Sender</form:label></td>
-        <td><form:input path="sender" style="border : solid 2px #cccccc; padding : 4px; width : 200;"/></td>
+        <td><form:input path="sender" style="border : solid 2px #cccccc; padding : 4px; width : 200;"/></td>    
     </tr>
     <tr>
         <td><form:label path="message">Message</form:label></td>
@@ -44,10 +44,11 @@
             <input type="submit" name="add" value="Send Message" />
         </td>
     </tr>
-	</table> 
-	</form:form>
+	</table>
 	
 	<hr/>	
-	<div id="protocol" style="border : solid 2px #cccccc; background : #000000; color : #ffffff; padding : 4px; height : 300px; overflow : auto;">${protocol} </div>
+		<input type="submit" name="delete" value="Delete Chat Protocol" />
+	</form:form>
+    <div id="protocol" style="border : solid 2px #cccccc; background : #000000; color : #ffffff; padding : 4px; height : 300px; overflow : auto;">${protocol} </div>
 </body>
 </html>
