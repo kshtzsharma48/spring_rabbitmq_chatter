@@ -55,6 +55,13 @@ Note: there is a controversal discussion about whether to use annotation-based o
 	Thats why the queue must be created by the spring application: rabbitmq-context.xml
 - updated chat.jsp to provide a button to delete chat protocol
 
+<u>spring-rabbitmq-chatter 1.0_testing</u>
+- added junit tests
+- added ant build.xml
+- build.xml: init -> compile -> test -> package
+- build.xml: create war only if tests were successful
+- added cobertura (code coverage reporting)
+
 
 
 

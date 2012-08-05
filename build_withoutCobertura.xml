@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<project name="test" default="package" basedir=".">
+ 
+     <property name="dir.src" value="src"/>
+     <property name="dir.build" value="build"/>
+	 <property name="dir.test.reports" value="reports" />
+	 <property name="war.name" value="MellisSpringRabbitChatter"/>
+	 <property name="dir.lib.web" value="WebContent/WEB-INF/lib"/>
+	 <property name="dir.lib.tomcat" value="C:/software/apache-tomcat-6.0.35/lib"/>
+	
+	 <!-- add libs to classpath -->
+	 <path id="class.path">
+	  	<fileset dir="${dir.lib.web}">
+	    	<include name="**/*.jar" />
+	  	</fileset>
+	 	<fileset dir="${dir.lib.tomcat}">
+	 		<include name="**/*.jar" />
+	 	</fileset>
+     </path>
+
+	<!-- prepare: create directory to store compiled classes -->
+     <target name="init">
+          <mkdir dir="${dir.build}"/>
+     </target>
+ 
+	<!-- compile -->
+     <target name="compile" depends="init">
+    	<javac srcdir="${dir.src}" destdir="${dir.build}">
+     	  	<classpath refid="class.path" />
+     	</javac>
+     </target>
+	
+	<!-- execute tests-->
+     <target name="test" depends="compile" description="Run JUnit-tests ">
+		<delete dir="${dir.test.reports}" />
+    	<mkdir dir="${dir.test.reports}" />
+     	<junit printsummary="yes" fork="yes" haltonfailure="no" failureProperty="${test.failure}">        
+        	<classpath location="${dir.build}" /> 
+     		<classpath refid="class.path" />   
+        	<formatter type="xml" />
+        	<batchtest todir="${dir.test.reports}">
+            	<fileset dir="${dir.src}"> 
+                	<include name="**/*Test.java" /> 
+            	</fileset>
+       	 	</batchtest>
+    	</junit>
+
+    <echo message="JUnit tests are completed" />
+    </target>
+	
+	<!-- package (only of junit tests were successful) -->
+	<target name="package" depends="test" unless="${test.failure}">
+		<war destfile="${war.name}.war" webxml="WebContent/WEB-INF/web.xml" update="true">
+			<classes dir="${dir.build}"/>
+			<fileset dir="WebContent">
+				<exclude name="WEB-INF/web.xml"/>
+			</fileset>
+		</war>
+		<echo message="Packaging completed" />
+	</target>
+	
+</project>

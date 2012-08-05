@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<project name="test" default="package" basedir=".">
+ 
+     <property name="dir.src" value="src"/>
+     <property name="dir.build" value="build"/>
+	<property name="dir.build.instrumented" value="build/instrumented-classes"/>
+	 <property name="dir.test.reports" value="reports" />
+	 <property name="war.name" value="MellisSpringRabbitChatter"/>
+	 <property name="dir.lib.web" value="WebContent/WEB-INF/lib"/>
+	 <property name="dir.lib.tomcat" value="C:/software/apache-tomcat-6.0.35/lib"/>
+	 <property name="dir.lib.cobertura" value="C:/software/cobertura-1.9.4.1"/>
+	
+	 <!-- add libs to classpath -->
+	 <path id="class.path">
+	  	<fileset dir="${dir.lib.web}">
+	    	<include name="**/*.jar" />
+	  	</fileset>
+	 	<fileset dir="${dir.lib.tomcat}">
+	 		<include name="**/*.jar" />
+	 	</fileset>
+     </path>
+	
+	<!-- add libs to cobertura classpath -->
+	 <path id="class.path.cobertura">
+		<fileset dir="${dir.lib.cobertura}">
+			<include name="**/cobertura.jar" />
+			<include name="**/lib/**.jar" />
+		</fileset>
+	 </path>
+	
+	<taskdef classpathref="class.path.cobertura" resource="tasks.properties"/>
+	
+	<!-- prepare: create directory to store compiled classes -->
+     <target name="init">
+     	  <delete dir="${dir.build}" />
+          <mkdir dir="${dir.build}"/>
+     	<mkdir dir="${dir.build.instrumented}"/>
+     </target>
+ 
+	<!-- compile -->
+     <target name="compile" depends="init">
+    	<javac srcdir="${dir.src}" destdir="${dir.build}" debug="true" debuglevel="vars,lines,source">
+    		<classpath refid="class.path.cobertura" />
+     	  	<classpath refid="class.path" />
+     	</javac>
+     	
+    	<!-- Cobertura works by inserting instrumentation instructions directly 
+    				into your compiled Java classes-->
+    	<cobertura-instrument todir="${dir.build.instrumented}">
+    		<fileset dir="${dir.build}">
+    			<include name="**/*.class"/>
+    		</fileset>
+    	</cobertura-instrument>
+     </target>
+
+	<!-- execute tests -->
+	 <target name="test.cobertura" depends="compile" description="Run JUnit-tests ">
+		<delete dir="${dir.test.reports}" />
+		<mkdir dir="${dir.test.reports}" />
+		<junit printsummary="yes" fork="yes" haltonfailure="no" failureProperty="${test.failure}">        
+			<classpath location="${dir.build.instrumented}" /> <!--must be in first position -->
+		    <classpath location="${dir.build}" /> 
+		    <classpath refid="class.path" />  
+			<classpath refid="class.path.cobertura" /> 
+		    <formatter type="xml" />
+		    <batchtest todir="${dir.test.reports}">
+		    	<fileset dir="${dir.src}"> 
+		        	<include name="**/*Test.java" /> 
+		        </fileset>
+		    </batchtest>
+		</junit>
+
+		<echo message="JUnit tests are completed" />
+	</target>
+	
+	<!-- generate code coverage reports (needs cobertura.ser) -->
+	<target name="coverage-html" depends="test.cobertura">
+	    <cobertura-report srcdir="${dir.src}" destdir="${dir.test.reports}"/>
+	</target>
+	<target name="coverage-xml" depends="test.cobertura">
+	    <cobertura-report format="xml" srcdir="${src.dir}" destdir="${dir.test.reports}"/>
+	</target>
+	
+	<!-- package (only of junit tests were successful) -->
+	<target name="package" depends="coverage-xml" unless="${test.failure}">
+		<war destfile="${war.name}.war" webxml="WebContent/WEB-INF/web.xml" update="true">
+			<classes dir="${dir.build}"/>
+			<fileset dir="WebContent">
+				<exclude name="WEB-INF/web.xml"/>
+			</fileset>
+		</war>
+		<echo message="Packaging completed" />
+	</target>
+	
+	
+</project>

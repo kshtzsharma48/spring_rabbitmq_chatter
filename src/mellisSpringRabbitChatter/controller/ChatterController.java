@@ -4,8 +4,14 @@
 
 package mellisSpringRabbitChatter.controller;
  
-import mellisSpringRabbitChatter.entities.Chat;
+import java.util.Enumeration;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import mellisSpringRabbitChatter.entities.*;
+
+import org.apache.catalina.util.Enumerator;
 import org.springframework.amqp.core.AmqpAdmin;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.amqp.rabbit.core.RabbitAdmin;
@@ -14,6 +20,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -63,6 +70,8 @@ public class ChatterController {
 	public void setAdmin(RabbitAdmin admin) {
 		this.admin = admin;
 	}
+	
+	
 	// handle ROOT ("/")
     @RequestMapping("/")
     public ModelAndView handleStartRequest() {
@@ -75,8 +84,15 @@ public class ChatterController {
     
     // handle submitted form (submit-button with name="add")
     @RequestMapping(params = "add", value = "/chat", method = RequestMethod.POST)
-    public ModelAndView onSubmit(Model model, Chat chat) {
-        
+    public ModelAndView onSubmit(HttpServletRequest req, HttpServletResponse res, Model model, Chat chat){
+    	
+    	/*
+    	Enumeration e = req.getParameterNames();
+    	while(e.hasMoreElements()){
+    		String s = (String) e.nextElement();
+    		System.out.println(s + ": " +req.getParameter(s));
+    	}
+    	*/
     	// Send a message to the "messages" queue
         amqpTemplate.convertAndSend("chatQueue", chat.getSender() +": "+chat.getMessage());
         

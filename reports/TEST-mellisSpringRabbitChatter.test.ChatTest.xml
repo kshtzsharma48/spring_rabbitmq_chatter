@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="0" hostname="MW7VNPOHK90YY0" name="mellisSpringRabbitChatter.test.ChatTest" tests="2" time="1.56" timestamp="2012-08-05T15:31:34">
+  <properties>
+    <property name="java.vendor" value="Sun Microsystems Inc." />
+    <property name="dir.build" value="build" />
+    <property name="sun.java.launcher" value="SUN_STANDARD" />
+    <property name="eclipse.pdebuild.templates" value="/C:/software/eclipse/eclipse-indigo/plugins/org.eclipse.pde.build_3.7.0.v20110512-1320/templates/" />
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers" />
+    <property name="os.name" value="Windows 7" />
+    <property name="dir.lib.web" value="WebContent/WEB-INF/lib" />
+    <property name="sun.boot.class.path" value="C:\software\Java\jre6\lib\resources.jar;C:\software\Java\jre6\lib\rt.jar;C:\software\Java\jre6\lib\sunrsasign.jar;C:\software\Java\jre6\lib\jsse.jar;C:\software\Java\jre6\lib\jce.jar;C:\software\Java\jre6\lib\charsets.jar;C:\software\Java\jre6\lib\modules\jdk.boot.jar;C:\software\Java\jre6\classes" />
+    <property name="dir.lib.cobertura" value="C:/software/cobertura-1.9.4.1" />
+    <property name="sun.desktop" value="windows" />
+    <property name="java.vm.specification.vendor" value="Sun Microsystems Inc." />
+    <property name="ant.home" value="C:\software\eclipse\eclipse-indigo\plugins\org.apache.ant_1.8.2.v20120109-1030" />
+    <property name="java.runtime.version" value="1.6.0_25-b06" />
+    <property name="user.name" value="melanie.maronde" />
+    <property name="user.language" value="de" />
+    <property name="sun.boot.library.path" value="C:\software\Java\jre6\bin" />
+    <property name="ant.project.default-target" value="package" />
+    <property name="ant.project.name" value="test" />
+    <property name="java.version" value="1.6.0_25" />
+    <property name="user.timezone" value="" />
+    <property name="sun.arch.data.model" value="64" />
+    <property name="java.endorsed.dirs" value="C:\software\Java\jre6\lib\endorsed" />
+    <property name="sun.cpu.isalist" value="amd64" />
+    <property name="sun.jnu.encoding" value="Cp1252" />
+    <property name="file.encoding.pkg" value="sun.io" />
+    <property name="file.separator" value="\" />
+    <property name="java.specification.name" value="Java Platform API Specification" />
+    <property name="dir.test.reports" value="reports" />
+    <property name="java.class.version" value="50.0" />
+    <property name="user.country" value="DE" />
+    <property name="java.home" value="C:\software\Java\jre6" />
+    <property name="java.vm.info" value="mixed mode" />
+    <property name="ant.file" value="C:\Accenture\workspaces\WorkspaceSpring\MellisSpringRabbitChatter\build.xml" />
+    <property name="os.version" value="6.1" />
+    <property name="path.separator" value=";" />
+    <property name="java.vm.version" value="20.0-b11" />
+    <property name="user.variant" value="" />
+    <property name="ant.library.dir" value="C:\software\eclipse\eclipse-indigo\plugins\org.apache.ant_1.8.2.v20120109-1030\lib" />
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob" />
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle" />
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit" />
+    <property name="dir.lib.tomcat" value="C:/software/apache-tomcat-6.0.35/lib" />
+    <property name="eclipse.pdebuild.scripts" value="/C:/software/eclipse/eclipse-indigo/plugins/org.eclipse.pde.build_3.7.0.v20110512-1320/scripts/" />
+    <property name="user.home" value="C:\Users\melanie.maronde" />
+    <property name="java.specification.vendor" value="Sun Microsystems Inc." />
+    <property name="dir.build.instrumented" value="build/instrumented-classes" />
+    <property name="java.library.path" value="C:\software\Java\jre6\bin;.;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files (x86)\Haskell\bin;C:\software\Haskell Platform\2011.2.0.1\lib\extralibs\bin;C:\software\Haskell Platform\2011.2.0.1\bin;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Dell\DW WLAN Card;C:\software\Git\cmd;C:\software\QuickTime\QTSystem\;C:\software\Ruby193\bin;C:\Users\melanie.maronde\AppData\Roaming\cabal\bin;C:\software\Ruby193\bin;C:\software\Scala\scala-2.9.0.1\bin;C:\software\GridGain\bin;C:\software\apache-ant\apache-ant-1.8.4\bin;C:\software\neo4j\bin;C:\software\nodejs;C:\software\mongodb\mongodb-win32-x86_64-2.0.5\bin;C:\software\gradle-1.0\bin;C:\software\apache-maven-3.0.4\bin;C:\software\RabbitMQ Server\rabbitmq_server-2.8.4\sbin;C:\software\Python27" />
+    <property name="java.vendor.url" value="http://java.sun.com/" />
+    <property name="java.vm.vendor" value="Sun Microsystems Inc." />
+    <property name="dir.src" value="src" />
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner mellisSpringRabbitChatter.test.ChatTest filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=false outputtoformatters=true logfailedtests=true logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Accenture\workspaces\WorkspaceSpring\MellisSpringRabbitChatter\reports\TEST-mellisSpringRabbitChatter.test.ChatTest.xml crashfile=C:\Accenture\workspaces\WorkspaceSpring\MellisSpringRabbitChatter\junitvmwatcher6761255136128280880.properties propsfile=C:\Accenture\workspaces\WorkspaceSpring\MellisSpringRabbitChatter\junit5595669405344272554.properties" />
+    <property name="java.class.path" value="C:\Accenture\workspaces\WorkspaceSpring\MellisSpringRabbitChatter\build\instrumented-classes;C:\Accenture\workspaces\WorkspaceSpring\MellisSpringRabbitChatter\build;C:\Accenture\workspaces\WorkspaceSpring\MellisSpringRabbitChatter\WebContent\WEB-INF\lib\aopalliance-1.0.jar;C:\Accenture\workspaces\WorkspaceSpring\MellisSpringRabbitChatter\WebContent\WEB-INF\lib\commons-logging-1.1.1.jar;C:\Accenture\workspaces\WorkspaceSpring\MellisSpringRabbitChatter\WebContent\WEB-INF\lib\jstl-api-1.2.jar;C:\Accenture\workspaces\WorkspaceSpring\MellisSpringRabbitChatter\WebContent\WEB-INF\lib\junit.jar;C:\Accenture\workspaces\WorkspaceSpring\MellisSpringRabbitChatter\WebContent\WEB-INF\lib\org.hamcrest.core_1.1.0.v20090501071000.jar;C:\Accenture\workspaces\WorkspaceSpring\MellisSpringRabbitChatter\WebContent\WEB-INF\lib\org.springframework.aop-3.1.0.RELEASE.jar;C:\Accenture\workspaces\WorkspaceSpring\MellisSpringRabbitChatter\WebContent\WEB-INF\lib\org.springframework.asm-3.1.0.RELEASE.jar;C:\Accenture\workspaces\WorkspaceSpring\MellisSpringRabbitChatter\WebContent\WEB-INF\lib\org.springframework.aspects-3.1.0.RELEASE.jar;C:\Accenture\workspaces\WorkspaceSpring\MellisSpringRabbitChatter\WebContent\WEB-INF\lib\org.springframework.beans-3.1.0.RELEASE.jar;C:\Accenture\workspaces\WorkspaceSpring\MellisSpringRabbitChatter\WebContent\WEB-INF\lib\org.springframework.context-3.1.0.RELEASE.jar;C:\Accenture\workspaces\WorkspaceSpring\MellisSpringRabbitChatter\WebContent\WEB-INF\lib\org.springframework.context.support-3.1.0.RELEASE.jar;C:\Accenture\workspaces\WorkspaceSpring\MellisSpringRabbitChatter\WebContent\WEB-INF\lib\org.springframework.core-3.1.0.RELEASE.jar;C:\Accenture\workspaces\WorkspaceSpring\MellisSpringRabbitChatter\WebContent\WEB-INF\lib\org.springframework.expression-3.1.0.RELEASE.jar;C:\Accenture\workspaces\WorkspaceSpring\MellisSpringRabbitChatter\WebContent\WEB-INF\lib\org.springframework.instrument-3.1.0.RELEASE.jar;C:\Accenture\workspaces\WorkspaceSpring\MellisSpringRabbitChatter\WebContent\WEB-INF\lib\org.springframework.instrument.tomcat-3.1.0.RELEASE.jar;C:\Accenture\workspaces\WorkspaceSpring\MellisSpringRabbitChatter\WebContent\WEB-INF\lib\org.springframework.jdbc-3.1.0.RELEASE.jar;C:\Accenture\workspaces\WorkspaceSpring\MellisSpringRabbitChatter\WebContent\WEB-INF\lib\org.springframework.jms-3.1.0.RELEASE.jar;C:\Accenture\workspaces\WorkspaceSpring\MellisSpringRabbitChatter\WebContent\WEB-INF\lib\org.springframework.orm-3.1.0.RELEASE.jar;C:\Accenture\workspaces\WorkspaceSpring\MellisSpringRabbitChatter\WebContent\WEB-INF\lib\org.springframework.oxm-3.1.0.RELEASE.jar;C:\Accenture\workspaces\WorkspaceSpring\MellisSpringRabbitChatter\WebContent\WEB-INF\lib\org.springframework.test-3.1.0.RELEASE.jar;C:\Accenture\workspaces\WorkspaceSpring\MellisSpringRabbitChatter\WebContent\WEB-INF\lib\org.springframework.transaction-3.1.0.RELEASE.jar;C:\Accenture\workspaces\WorkspaceSpring\MellisSpringRabbitChatter\WebContent\WEB-INF\lib\org.springframework.web-3.1.0.RELEASE.jar;C:\Accenture\workspaces\WorkspaceSpring\MellisSpringRabbitChatter\WebContent\WEB-INF\lib\org.springframework.web.portlet-3.1.0.RELEASE.jar;C:\Accenture\workspaces\WorkspaceSpring\MellisSpringRabbitChatter\WebContent\WEB-INF\lib\org.springframework.web.servlet-3.1.0.RELEASE.jar;C:\Accenture\workspaces\WorkspaceSpring\MellisSpringRabbitChatter\WebContent\WEB-INF\lib\org.springframework.web.struts-3.1.0.RELEASE.jar;C:\Accenture\workspaces\WorkspaceSpring\MellisSpringRabbitChatter\WebContent\WEB-INF\lib\rabbitmq-client.jar;C:\Accenture\workspaces\WorkspaceSpring\MellisSpringRabbitChatter\WebContent\WEB-INF\lib\spring-amqp-1.1.1.RELEASE.jar;C:\Accenture\workspaces\WorkspaceSpring\MellisSpringRabbitChatter\WebContent\WEB-INF\lib\spring-erlang-1.1.1.RELEASE.jar;C:\Accenture\workspaces\WorkspaceSpring\MellisSpringRabbitChatter\WebContent\WEB-INF\lib\spring-rabbit-1.1.1.RELEASE.jar;C:\software\apache-tomcat-6.0.35\lib\annotations-api.jar;C:\software\apache-tomcat-6.0.35\lib\catalina-ant.jar;C:\software\apache-tomcat-6.0.35\lib\catalina-ha.jar;C:\software\apache-tomcat-6.0.35\lib\catalina-tribes.jar;C:\software\apache-tomcat-6.0.35\lib\catalina.jar;C:\software\apache-tomcat-6.0.35\lib\ecj-3.7.jar;C:\software\apache-tomcat-6.0.35\lib\el-api.jar;C:\software\apache-tomcat-6.0.35\lib\jasper-el.jar;C:\software\apache-tomcat-6.0.35\lib\jasper.jar;C:\software\apache-tomcat-6.0.35\lib\jsp-api.jar;C:\software\apache-tomcat-6.0.35\lib\servlet-api.jar;C:\software\apache-tomcat-6.0.35\lib\tomcat-coyote.jar;C:\software\apache-tomcat-6.0.35\lib\tomcat-dbcp.jar;C:\software\apache-tomcat-6.0.35\lib\tomcat-i18n-es.jar;C:\software\apache-tomcat-6.0.35\lib\tomcat-i18n-fr.jar;C:\software\apache-tomcat-6.0.35\lib\tomcat-i18n-ja.jar;C:\software\cobertura-1.9.4.1\cobertura.jar;C:\software\cobertura-1.9.4.1\lib\asm-3.0.jar;C:\software\cobertura-1.9.4.1\lib\asm-tree-3.0.jar;C:\software\cobertura-1.9.4.1\lib\jakarta-oro-2.0.8.jar;C:\software\cobertura-1.9.4.1\lib\log4j-1.2.9.jar;C:\Accenture\workspaces\WorkspaceSpring\MellisSpringRabbitChatter;C:\software\QuickTime\QTSystem\QTJava.zip;C:\software\eclipse\eclipse-indigo\plugins\org.apache.ant_1.8.2.v20120109-1030\lib\ant-launcher.jar;C:\software\eclipse\eclipse-indigo\plugins\org.apache.ant_1.8.2.v20120109-1030\lib\ant.jar;C:\software\eclipse\eclipse-indigo\plugins\org.apache.ant_1.8.2.v20120109-1030\lib\ant-junit.jar;C:\software\eclipse\eclipse-indigo\plugins\org.apache.ant_1.8.2.v20120109-1030\lib\ant-junit4.jar" />
+    <property name="ant.version" value="Apache Ant(TM) version 1.8.2 compiled on December 20 2010" />
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+    <property name="java.vm.specification.version" value="1.0" />
+    <property name="sun.cpu.endian" value="little" />
+    <property name="sun.os.patch.level" value="Service Pack 1" />
+    <property name="eclipse.pdebuild.home" value="/C:/software/eclipse/eclipse-indigo/plugins/org.eclipse.pde.build_3.7.0.v20110512-1320/./" />
+    <property name="java.io.tmpdir" value="C:\Users\MELANI~1.MAR\AppData\Local\Temp\" />
+    <property name="java.vendor.url.bug" value="http://java.sun.com/cgi-bin/bugreport.cgi" />
+    <property name="ant.file.test" value="C:\Accenture\workspaces\WorkspaceSpring\MellisSpringRabbitChatter\build.xml" />
+    <property name="ant.file.type.test" value="file" />
+    <property name="os.arch" value="amd64" />
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment" />
+    <property name="java.ext.dirs" value="C:\software\Java\jre6\lib\ext;C:\Windows\Sun\Java\lib\ext" />
+    <property name="user.dir" value="C:\Accenture\workspaces\WorkspaceSpring\MellisSpringRabbitChatter" />
+    <property name="line.separator" value="&#xd;&#xa;" />
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM" />
+    <property name="basedir" value="C:\Accenture\workspaces\WorkspaceSpring\MellisSpringRabbitChatter" />
+    <property name="ant.java.version" value="1.6" />
+    <property name="ant.core.lib" value="C:\software\eclipse\eclipse-indigo\plugins\org.apache.ant_1.8.2.v20120109-1030\lib\ant.jar" />
+    <property name="file.encoding" value="Cp1252" />
+    <property name="war.name" value="MellisSpringRabbitChatter" />
+    <property name="java.specification.version" value="1.6" />
+    <property name="ant.project.invoked-targets" value="package" />
+  </properties>
+  <testcase classname="mellisSpringRabbitChatter.test.ChatTest" name="test1" time="1.513" />
+  <testcase classname="mellisSpringRabbitChatter.test.ChatTest" name="test2" time="0.0" />
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
